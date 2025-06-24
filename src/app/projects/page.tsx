@@ -21,8 +21,10 @@ export default function Projects() {
     <>
       <NavBar />
       <main className="min-h-screen max-w-5xl mx-auto p-8">
-        <h1 className="text-4xl font-bold mb-8 text-center">Mis proyectos</h1>
-        <div className="grid md:grid-cols-2 gap-8">
+        <h1 className="text-4xl font-bold mb-8 text-center opacity-0 animate-fade-in">
+          Mis proyectos
+        </h1>
+        <div className="grid md:grid-cols-2 gap-8 opacity-0 animate-fade-in animation-delay-200">
           {projects.map(({ title, description, tech, repo, demo }) => (
             <article
               key={title}

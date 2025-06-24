@@ -131,6 +131,39 @@ button:hover, .btn:hover {
   box-shadow: 0 6px 16px var(--shadow-color);
 }
 
+/* ⚠️ Sobrescribir para dark-toggle (botón toggle modo oscuro) */
+button.dark-toggle {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 1.5rem;
+  border: 2px solid var(--border-color);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+  color: inherit; /* para que el color de texto se adapte */
+  background: none; /* nada de fondo */
+  box-shadow: none; /* sin sombra */
+}
+
+/* Hover en modo claro: fondo negro y texto blanco */
+button.dark-toggle:hover {
+  background-color: #171717;
+  color: white;
+}
+
+/* Hover en modo oscuro: fondo blanco y texto negro */
+.dark button.dark-toggle:hover {
+  background-color: #ededed;
+  color: black;
+}
+
+button.dark-toggle:active {
+  transform: scale(0.95);
+}
+
 /* 🏷️ Contenedores Responsivos */
 .container {
   max-width: 1200px;
@@ -150,7 +183,6 @@ button:hover, .btn:hover {
 
 /* 🌟 Detalles Visuales Extra */
 img {
-  border-radius: 0.5rem;
   max-width: 100%;
   height: auto;
   display: block;
@@ -168,4 +200,28 @@ ul {
 
 li {
   margin-bottom: 0.5rem;
+}
+
+/* Animaciones Fade In para todo el portafolio */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1.2s ease-in-out forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
 }

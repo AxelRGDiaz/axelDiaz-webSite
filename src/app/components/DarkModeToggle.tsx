@@ -23,7 +23,7 @@ export default function DarkModeToggle() {
   }
 
   return (
-    <button onClick={toggleDark} className="btn">
+    <button onClick={toggleDark} className="dark-toggle" aria-label="Toggle Dark Mode">
       {isDark ? "☀️" : "🌙"}
     </button>
   );
