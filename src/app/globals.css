@@ -1,26 +1,171 @@
 @import "tailwindcss";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* 🎨 Variables Globales */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --primary-color: #2563eb;
+  --secondary-color: #9333ea;
+  --accent-color: #f59e0b;
+  --border-color: #e5e7eb;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --link-color: #171717;
+  --link-hover: var(--primary-color);
+  --font-sans: 'Inter', 'Arial', 'Helvetica', sans-serif;
+  --font-mono: monospace;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary-color: #60a5fa;
+    --secondary-color: #a78bfa;
+    --accent-color: #fbbf24;
+    --border-color: #333333;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --link-color: #ededed;
+    --link-hover: var(--secondary-color);
   }
 }
 
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --primary-color: #60a5fa;
+  --secondary-color: #a78bfa;
+  --accent-color: #fbbf24;
+  --border-color: #333333;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --link-color: #ededed;
+  --link-hover: var(--secondary-color);
+}
+
+/* 🌐 Global Reset y Transiciones */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  margin: 0;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 🔗 Enlaces */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* 📝 Titulares */
+h1, h2, h3 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--foreground);
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+/* 💻 Tarjetas y Secciones */
+section, .card, .container {
+  background-color: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  padding: 1.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+/* 🖲️ Botones Generales */
+button, .btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 0.6rem 1.4rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--shadow-color);
+}
+
+/* 🏷️ Contenedores Responsivos */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* 🌑 Navbar Fondo Difuminado */
+.navbar-blur {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.dark .navbar-blur {
+  background-color: rgba(10, 10, 10, 0.7);
+}
+
+/* 🌟 Detalles Visuales Extra */
+img {
+  border-radius: 0.5rem;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+p {
+  margin-bottom: 1rem;
+  max-width: 70ch;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 0.5rem;
 }
