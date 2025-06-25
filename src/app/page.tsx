@@ -14,7 +14,7 @@ export default function Home() {
         </p>
         <a
           href="/projects"
-          className="btn opacity-0 animate-fade-in animation-delay-400"
+          className="btn-minimal"
         >
           View my projects
         </a>

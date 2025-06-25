@@ -10,6 +10,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es">
       <head>
       <link rel="icon" href="/favicon.svg" />
+      
       </head>
       <body>{children}</body>
     </html>

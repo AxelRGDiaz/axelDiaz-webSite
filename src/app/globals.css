@@ -117,7 +117,7 @@ button:hover, .btn:hover {
   box-shadow: 0 6px 16px var(--shadow-color);
 }
 
-/* ⚠️ Sobrescribir para dark-toggle (botón toggle modo oscuro) */
+/* ⚠️ Botón toggle modo oscuro */
 button.dark-toggle {
   all: unset;
   display: flex;
@@ -129,18 +129,16 @@ button.dark-toggle {
   border-radius: 9999px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
-  color: inherit; /* para que el color de texto se adapte */
-  background: none; /* nada de fondo */
-  box-shadow: none; /* sin sombra */
+  color: inherit;
+  background: none;
+  box-shadow: none;
 }
 
-/* Hover en modo claro: fondo negro y texto blanco */
 button.dark-toggle:hover {
   background-color: #171717;
   color: white;
 }
 
-/* Hover en modo oscuro: fondo blanco y texto negro */
 .dark button.dark-toggle:hover {
   background-color: #ededed;
   color: black;
@@ -148,6 +146,38 @@ button.dark-toggle:hover {
 
 button.dark-toggle:active {
   transform: scale(0.95);
+}
+
+/* 🧩 Botón Minimalista Mejorado */
+button.btn-minimal, .btn-minimal {
+  background: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--border-color);
+  padding: 0.6rem 1.4rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover en modo claro */
+button.btn-minimal:hover, .btn-minimal:hover {
+  background-color: #171717;
+  color: white;
+  border-color: #171717;
+  transform: translateY(-1px);
+}
+
+/* Hover en modo oscuro */
+.dark button.btn-minimal:hover, .dark .btn-minimal:hover {
+  background-color: #ededed;
+  color: #171717;
+  border-color: #ededed;
+  transform: translateY(-1px);
 }
 
 /* 🏷️ Contenedores Responsivos */
@@ -188,7 +218,7 @@ li {
   margin-bottom: 0.5rem;
 }
 
-/* Animaciones Fade In para todo el portafolio */
+/* Animaciones Fade In */
 @keyframes fade-in {
   from {
     opacity: 0;
