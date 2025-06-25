@@ -2,17 +2,17 @@ import NavBar from "../components/NavBar";
 
 const projects = [
   {
-    title: "Proyecto Uno",
-    description: "App moderna con Next.js y Tailwind.",
-    tech: ["Next.js", "Tailwind", "TypeScript"],
-    repo: "https://github.com/tuusuario/proyecto-uno",
-    demo: "https://demo.proyecto-uno.com",
+    title: "Environmental Monitoring",
+    description: "Environmental monitoring app with IoT and MongoDB",
+    tech: ["Node", "Express", "MongoDB"],
+    repo: "https://github.com/AxelRGDiaz/Monitoreo-Ambiental-con-IoT-y-MongoDB",
   },
   {
-    title: "Proyecto Dos",
-    description: "App frontend con React y API REST.",
-    tech: ["React", "API REST", "CSS Modules"],
-    repo: "https://github.com/tuusuario/proyecto-dos",
+    title: "Portfolio",
+    description: "Frontend app with Next.js",
+    tech: ["Next.js", "Tailwind", "TypeScript"],
+    repo: "https://github.com/AxelRGDiaz/axelDiaz-webSite",
+    demo: "https://axel-diaz.com"
   },
 ];
 
@@ -22,7 +22,7 @@ export default function Projects() {
       <NavBar />
       <main className="min-h-screen max-w-5xl mx-auto p-8">
         <h1 className="text-4xl font-bold mb-8 text-center opacity-0 animate-fade-in">
-          Mis proyectos
+          My Projects
         </h1>
         <div className="grid md:grid-cols-2 gap-8 opacity-0 animate-fade-in animation-delay-200">
           {projects.map(({ title, description, tech, repo, demo }) => (
@@ -33,7 +33,7 @@ export default function Projects() {
               <h2 className="text-2xl font-semibold mb-2">{title}</h2>
               <p className="mb-3 text-gray-700 dark:text-gray-300">{description}</p>
               <p className="mb-3 font-mono text-sm text-primary">
-                Tecnologías: {tech.join(", ")}
+                Technologies: {tech.join(", ")}
               </p>
               <div className="flex space-x-4">
                 {repo && (

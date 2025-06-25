@@ -6,7 +6,8 @@ export default function DarkModeToggle() {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (prefersDark) {
       setIsDark(true);
       document.documentElement.classList.add("dark");
     }
