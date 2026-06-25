@@ -1,0 +1,28 @@
+---
+title: "Environmental Monitor"
+description: "Real-time environmental monitoring system collecting and visualizing sensor data via MQTT, deployed on a Linux server."
+stack: ["Node.js", "MQTT", "MongoDB", "Linux", "SSH"]
+category: "Backend"
+status: "live"
+featured: true
+year: 2023
+role: "Solo Developer"
+problem: "Needed a way to collect, store, and visualize environmental sensor data in real time from multiple distributed sensors without missing readings or losing data under intermittent connectivity."
+solution: "Built a Node.js service that subscribes to an MQTT broker to receive sensor telemetry, stores time-series data in MongoDB, and exposes a dashboard for real-time visualization. Deployed and managed on a Linux server via SSH."
+architecture: "Node.js subscriber listening to MQTT topics, writing to MongoDB collections. A web-based dashboard reads from the DB and shows real-time charts. Deployed on a Linux VPS managed remotely via SSH."
+challenges:
+  - "Handling MQTT reconnection logic to avoid data loss during network drops"
+  - "Designing a MongoDB schema efficient for time-series sensor queries"
+  - "Deploying and managing the service via SSH on a headless Linux server"
+metrics:
+  - { label: "Data collection", value: "Real-time" }
+  - { label: "Protocol", value: "MQTT" }
+  - { label: "Storage", value: "MongoDB" }
+links:
+  github: "https://github.com/axelrgdiaz"
+thumbnail: "/images/projects/monitor-thumb.png"
+---
+
+## Overview
+
+A personal project built to practice IoT data collection, real-time data pipelines, and Linux server administration — all outside my primary Ruby on Rails stack.

@@ -1,0 +1,12 @@
+{
+  "name": "DIAZ OS — Axel Díaz Portfolio",
+  "short_name": "DIAZ OS",
+  "description": "Full Stack Developer Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#09090b",
+  "icons": [
+    { "src": "/favicon.ico", "sizes": "any", "type": "image/x-icon" }
+  ]
+}

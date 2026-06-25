@@ -1,0 +1,27 @@
+---
+title: "Enterprise Web Platform — Mobysuite"
+description: "Full-stack development of enterprise features for Mobysuite's real estate management platform using Ruby on Rails and Vue 3."
+stack: ["Ruby on Rails", "Vue 3", "MySQL", "Sidekiq", "Redis", "Docker", "ActionMailer"]
+category: "Full Stack"
+status: "live"
+featured: true
+year: 2024
+role: "Full Stack Web Developer"
+problem: "Enterprise clients needed reliable document generation, email notifications, and async processing for time-sensitive real estate operations — without blocking the main request cycle."
+solution: "Implemented background job processing with Sidekiq for PDF/ZIP generation and email delivery. Built REST API endpoints consumed by the Vue 3 frontend, with complex MySQL queries for reporting."
+architecture: "Rails monolith with API endpoints, Sidekiq workers for async tasks backed by Redis, MySQL with optimized queries for business reports, Vue 3 frontend consuming the REST API."
+challenges:
+  - "Writing complex SQL joins and optimizing slow queries for large datasets"
+  - "Designing reliable Sidekiq workers with proper retry logic and error handling"
+  - "Building dynamic email templates with ActionMailer that render correctly across email clients"
+metrics:
+  - { label: "Stack", value: "Rails + Vue 3" }
+  - { label: "Jobs", value: "Sidekiq" }
+  - { label: "DB", value: "MySQL" }
+links: {}
+thumbnail: "/images/projects/mobysuite-thumb.png"
+---
+
+## Overview
+
+Production work at Mobysuite — enterprise real estate management platform. Built and maintained features across the full stack in a professional team environment.

@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DIAZ OS — Portfolio
+
+A personal portfolio built as a developer OS experience — not a traditional portfolio.
+
+## Stack
+
+- **Next.js 15** (App Router, SSG)
+- **TypeScript** (strict mode)
+- **Tailwind CSS v4**
+- **Framer Motion** (animations)
+- **Shadcn/UI** (base components)
+- **MDX** (content management)
+- **Resend** (contact form emails)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How to Customize
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Add a new project
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create `content/projects/my-project.mdx`:
 
-## Learn More
+```mdx
+---
+title: "My Project"
+description: "Short description"
+stack: ["React", "Node.js"]
+category: "Full Stack"
+status: "live"
+featured: true
+year: 2024
+role: "Lead Developer"
+problem: "What problem did this solve?"
+solution: "How did you solve it?"
+challenges:
+  - "Challenge 1"
+metrics:
+  - { label: "Users", value: "10k+" }
+links:
+  github: "https://github.com/..."
+  demo: "https://demo.example.com"
+---
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Add work experience
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Create `content/experience/company-year.mdx`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```mdx
+---
+company: "Company Name"
+role: "Your Role"
+version: "v4.0"
+startDate: "2024-01-01"
+current: true
+type: "full-time"
+location: "City, Country"
+remote: true
+description: "Role description"
+achievements:
+  - "Achievement 1"
+stack: ["React", "Node.js"]
+---
+```
 
-## Deploy on Vercel
+### Update your CV
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Replace `public/cv.pdf` with your PDF. No code changes needed.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Environment Variables
+
+```env
+RESEND_API_KEY=re_xxxxxxxxxxxx
+NEXT_PUBLIC_SITE_URL=https://yourdomain.com
+```
+
+## Deploy to Vercel
+
+Connect this repo to Vercel and set the environment variables in the dashboard.
+
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `⌘K` / `Ctrl+K` | Open Command Palette |
+| `↑↓` | Navigate |
+| `Enter` | Select |
+| `Esc` | Close |

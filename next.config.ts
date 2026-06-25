@@ -1,7 +1,14 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  pageExtensions: ["ts", "tsx", "mdx"],
+  images: {
+    formats: ["image/avif", "image/webp"],
+    remotePatterns: [],
+  },
+  experimental: {
+    optimizeCss: true,
+  },
+}
 
-export default nextConfig;
+export default nextConfig
