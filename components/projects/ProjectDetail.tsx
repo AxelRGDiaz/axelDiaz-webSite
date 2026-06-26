@@ -58,7 +58,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                 className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition-colors"
               >
                 <ExternalLink className="w-3.5 h-3.5" />
-                Demo
+                {t.projects.liveDemo}
               </a>
             )}
             {project.links.github && (

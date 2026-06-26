@@ -40,7 +40,7 @@ export function Sidebar() {
   const { t } = useLang()
 
   return (
-    <aside className="fixed left-0 top-0 h-full w-14 flex flex-col items-center py-4 gap-2 border-r border-black/[0.08] dark:border-white/[0.06] bg-white/90 dark:bg-zinc-950/80 backdrop-blur-xl z-50 transition-colors duration-200">
+    <aside className="hidden md:flex fixed left-0 top-0 h-full w-14 flex-col items-center py-4 gap-2 border-r border-black/[0.08] dark:border-white/[0.06] bg-white/90 dark:bg-zinc-950/80 backdrop-blur-xl z-50 transition-colors duration-200">
       {/* Logo */}
       <div className="mb-4">
         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold select-none">
@@ -106,7 +106,7 @@ export function Sidebar() {
           </button>
           <div className="pointer-events-none absolute left-full ml-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-150 z-50">
             <div className="bg-zinc-900 dark:bg-zinc-800 border border-white/10 text-white text-xs px-2.5 py-1.5 rounded-lg whitespace-nowrap shadow-xl flex items-center gap-1.5">
-              Command Palette <span className="opacity-50 font-mono">⌘K</span>
+              {t.nav.commandPalette} <span className="opacity-50 font-mono">⌘K</span>
             </div>
           </div>
         </div>

@@ -9,10 +9,13 @@ export const translations = {
       lab: "Tech Lab",
       cv: "CV Center",
       contact: "Contact",
+      commandPalette: "Command Palette",
     },
     topbar: {
       search: "Search",
       root: "DIAZ OS",
+      switchLight: "Switch to light mode",
+      switchDark: "Switch to dark mode",
     },
     status: {
       available: "Open to new opportunities",
@@ -202,10 +205,13 @@ export const translations = {
       lab: "Tech Lab",
       cv: "Centro CV",
       contact: "Contacto",
+      commandPalette: "Paleta de Comandos",
     },
     topbar: {
       search: "Buscar",
       root: "DIAZ OS",
+      switchLight: "Cambiar a modo claro",
+      switchDark: "Cambiar a modo oscuro",
     },
     status: {
       available: "Abierto a nuevas oportunidades",

@@ -6,6 +6,8 @@ import { X, ChevronRight } from "lucide-react"
 import { TECHNOLOGIES } from "@/lib/data"
 import { type Technology } from "@/types"
 import { useLang } from "@/contexts/LanguageContext"
+import { useIsMobile } from "@/hooks/useIsMobile"
+import { Sheet, SheetContent } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
 
 const LEVEL_BAR: Record<string, { bar: string; width: string }> = {
@@ -35,6 +37,11 @@ export function TechLab() {
   const [selectedCat, setSelectedCat] = useState("__all__")
   const [selectedTech, setSelectedTech] = useState<Technology | null>(null)
   const { t } = useLang()
+  const isMobile = useIsMobile()
+
+  const handleTechClick = (tech: Technology) => {
+    setSelectedTech(selectedTech?.name === tech.name ? null : tech)
+  }
 
   const CATEGORIES = ["__all__", "framework", "language", "database", "tool", "other"]
 
@@ -47,6 +54,12 @@ export function TechLab() {
   }, {} as Record<string, Technology[]>)
 
   return (
+    <>
+    <Sheet open={isMobile && !!selectedTech} onOpenChange={(open) => { if (!open) setSelectedTech(null) }}>
+      <SheetContent side="bottom" className="max-h-[80vh] overflow-y-auto p-0" showCloseButton={false}>
+        {selectedTech && <TechDetail tech={selectedTech} onClose={() => setSelectedTech(null)} />}
+      </SheetContent>
+    </Sheet>
     <div className="flex h-[calc(100vh-6rem)]">
       <div className={cn("flex flex-col flex-1 min-w-0", selectedTech && "lg:flex-none lg:w-[460px]")}>
         {/* Header */}
@@ -92,7 +105,7 @@ export function TechLab() {
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                     {techs.map((tech) => (
-                      <TechModule key={tech.name} tech={tech} isSelected={selectedTech?.name === tech.name} onClick={() => setSelectedTech(selectedTech?.name === tech.name ? null : tech)} levelLabel={t.lab.levels[tech.level]} levelColor={LEVEL_COLOR[tech.level]} levelBar={LEVEL_BAR[tech.level]} />
+                      <TechModule key={tech.name} tech={tech} isSelected={selectedTech?.name === tech.name} onClick={() => handleTechClick(tech)} levelLabel={t.lab.levels[tech.level]} levelColor={LEVEL_COLOR[tech.level]} levelBar={LEVEL_BAR[tech.level]} />
                     ))}
                   </div>
                 </div>
@@ -101,14 +114,14 @@ export function TechLab() {
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 p-6">
               {filtered.map((tech) => (
-                <TechModule key={tech.name} tech={tech} isSelected={selectedTech?.name === tech.name} onClick={() => setSelectedTech(selectedTech?.name === tech.name ? null : tech)} levelLabel={t.lab.levels[tech.level]} levelColor={LEVEL_COLOR[tech.level]} levelBar={LEVEL_BAR[tech.level]} />
+                <TechModule key={tech.name} tech={tech} isSelected={selectedTech?.name === tech.name} onClick={() => handleTechClick(tech)} levelLabel={t.lab.levels[tech.level]} levelColor={LEVEL_COLOR[tech.level]} levelBar={LEVEL_BAR[tech.level]} />
               ))}
             </div>
           )}
         </div>
       </div>
 
-      {/* Detail panel */}
+      {/* Detail panel — desktop only */}
       <AnimatePresence>
         {selectedTech && (
           <motion.div
@@ -123,6 +136,7 @@ export function TechLab() {
         )}
       </AnimatePresence>
     </div>
+    </>
   )
 }
 
@@ -130,6 +144,7 @@ function TechModule({ tech, isSelected, onClick, levelLabel, levelColor, levelBa
   tech: Technology; isSelected: boolean; onClick: () => void
   levelLabel: string; levelColor: string; levelBar: { bar: string; width: string }
 }) {
+  const { t } = useLang()
   return (
     <motion.button
       whileHover={{ scale: 1.02 }}
@@ -145,7 +160,7 @@ function TechModule({ tech, isSelected, onClick, levelLabel, levelColor, levelBa
       <div className="text-sm font-medium text-zinc-700 dark:text-zinc-200 mb-2 truncate">{tech.name}</div>
       <div className="flex items-center justify-between mb-1.5">
         <span className={cn("text-[10px] font-mono", levelColor)}>{levelLabel}</span>
-        <span className="text-[10px] text-zinc-400 dark:text-zinc-600">{tech.yearsOfExperience}yr</span>
+        <span className="text-[10px] text-zinc-400 dark:text-zinc-600">{tech.yearsOfExperience}{t.lab.detail.years}</span>
       </div>
       <div className="h-1 w-full rounded-full bg-black/[0.06] dark:bg-white/[0.06] overflow-hidden">
         <div className={cn("h-full rounded-full", levelBar.bar, levelBar.width)} />

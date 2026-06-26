@@ -1,12 +1,14 @@
 "use client"
 
 import { useState, useMemo } from "react"
+import { useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Search, Grid3X3, List, ExternalLink, ChevronRight, Layers } from "lucide-react"
 import { type Project } from "@/types"
 import { cn } from "@/lib/utils"
 import { ProjectPanel } from "./ProjectPanel"
 import { useLang } from "@/contexts/LanguageContext"
+import { useIsMobile } from "@/hooks/useIsMobile"
 
 const STATUS_DOT: Record<string, string> = {
   live: "bg-emerald-400",
@@ -24,6 +26,16 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
   const [view, setView] = useState<"grid" | "list">("list")
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const { t } = useLang()
+  const isMobile = useIsMobile()
+  const router = useRouter()
+
+  const handleProjectClick = (project: Project) => {
+    if (isMobile) {
+      router.push(`/projects/${project.slug}`)
+    } else {
+      setSelectedProject(selectedProject?.slug === project.slug ? null : project)
+    }
+  }
 
   const CATEGORIES = ["__all__", "Full Stack", "Backend", "Frontend", "DevOps"]
 
@@ -101,7 +113,7 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ delay: i * 0.04 }}
-                    onClick={() => setSelectedProject(selectedProject?.slug === project.slug ? null : project)}
+                    onClick={() => handleProjectClick(project)}
                     className={cn(
                       "w-full text-left px-6 py-4 flex items-center gap-4 hover:bg-black/[0.03] dark:hover:bg-white/[0.03] transition-colors group",
                       selectedProject?.slug === project.slug && "bg-black/[0.04] dark:bg-white/[0.04] border-l-2 border-indigo-500"
@@ -141,7 +153,7 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.96 }}
                     transition={{ delay: i * 0.06 }}
-                    onClick={() => setSelectedProject(selectedProject?.slug === project.slug ? null : project)}
+                    onClick={() => handleProjectClick(project)}
                     className={cn(
                       "text-left p-4 rounded-xl border transition-all",
                       selectedProject?.slug === project.slug

@@ -5,6 +5,7 @@ import { Sidebar } from "./Sidebar"
 import { TopBar } from "./TopBar"
 import { CommandPalette } from "./CommandPalette"
 import { StatusBar } from "./StatusBar"
+import { MobileNav } from "./MobileNav"
 import { LanguageProvider } from "@/contexts/LanguageContext"
 
 const pageVariants = {
@@ -28,8 +29,9 @@ export function OSShell({ children }: { children: React.ReactNode }) {
         <Sidebar />
         <TopBar />
         <CommandPalette />
+        <MobileNav />
 
-        <main className="relative ml-14 pt-10 pb-8 min-h-screen z-10">
+        <main className="relative ml-0 md:ml-14 pt-10 pb-16 md:pb-8 min-h-screen z-10">
           <motion.div
             variants={pageVariants}
             initial="initial"

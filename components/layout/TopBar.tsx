@@ -26,7 +26,7 @@ export function TopBar() {
   const crumbs = BREADCRUMBS[basePath] ?? [t.topbar.root, "—"]
 
   return (
-    <header className="fixed top-0 left-14 right-0 h-10 flex items-center justify-between px-4 border-b border-black/[0.08] dark:border-white/[0.06] bg-white/80 dark:bg-zinc-950/60 backdrop-blur-xl z-40 transition-colors duration-200">
+    <header className="fixed top-0 left-0 md:left-14 right-0 h-10 flex items-center justify-between px-4 border-b border-black/[0.08] dark:border-white/[0.06] bg-white/80 dark:bg-zinc-950/60 backdrop-blur-xl z-40 transition-colors duration-200">
       {/* Breadcrumbs */}
       <div className="flex items-center gap-1.5 text-xs">
         {crumbs.map((crumb, i) => (
@@ -74,7 +74,7 @@ export function TopBar() {
         <button
           onClick={toggle}
           className="w-7 h-7 rounded-md flex items-center justify-center text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-200 hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-colors"
-          title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+          title={isDark ? t.topbar.switchLight : t.topbar.switchDark}
         >
           {isDark ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
         </button>

@@ -76,6 +76,17 @@ export function CareerFeed({ experience }: CareerFeedProps) {
                             )}
                           </div>
                           <div className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">@ {exp.company}</div>
+                        <div className="sm:hidden flex flex-col gap-0.5 text-[11px] text-zinc-400 dark:text-zinc-600 mt-1">
+                            <span className="flex items-center gap-1">
+                              <Calendar className="w-3 h-3" />
+                              {format(new Date(exp.startDate), "MMM yyyy", { locale: dateLocale })} —{" "}
+                              {exp.current ? t.career.present : exp.endDate ? format(new Date(exp.endDate), "MMM yyyy", { locale: dateLocale }) : "?"}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <MapPin className="w-3 h-3" />
+                              {exp.remote ? t.career.remote : exp.location}
+                            </span>
+                          </div>
                         </div>
                         <div className="flex items-center gap-3 flex-shrink-0">
                           <div className="hidden sm:flex flex-col items-end gap-0.5 text-[11px] text-zinc-400 dark:text-zinc-600">
