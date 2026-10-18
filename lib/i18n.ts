@@ -14,7 +14,7 @@ export const translations = {
       players: "1 JUGADOR · COLIMA, MX",
       intro:
         "Desarrollador full stack. Construyo aplicaciones web completas con Ruby on Rails y Vue 3, y apps raras por gusto.",
-      start: "▶ PRESIONA START",
+      start: "PRESIONA START",
       sprite: "Personaje pixelado de Axel con su laptop",
     },
     status: {
@@ -105,7 +105,7 @@ export const translations = {
     notFound: {
       title: "GAME OVER",
       text: "Esta pantalla no existe. Tal vez el enlace cambió con el rediseño.",
-      back: "▶ CONTINUAR",
+      back: "CONTINUAR",
     },
   },
   en: {
@@ -121,7 +121,7 @@ export const translations = {
       players: "1 PLAYER · COLIMA, MX",
       intro:
         "Full stack developer. I build complete web applications with Ruby on Rails and Vue 3, and odd little apps for fun.",
-      start: "▶ PRESS START",
+      start: "PRESS START",
       sprite: "Pixel art of Axel with his laptop",
     },
     status: {
@@ -212,7 +212,7 @@ export const translations = {
     notFound: {
       title: "GAME OVER",
       text: "This screen doesn't exist. The link may have changed with the redesign.",
-      back: "▶ CONTINUE",
+      back: "CONTINUE",
     },
   },
 } satisfies Record<Lang, unknown>

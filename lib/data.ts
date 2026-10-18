@@ -1,6 +1,6 @@
 import type { Chapter, InventoryItem, Quest } from "@/types"
 
-export const SITE_URL = "https://axel-diaz.com"
+export const SITE_URL = "https://www.axel-diaz.com"
 
 export const PERSONAL_INFO = {
   name: "Axel Guerrero Díaz",

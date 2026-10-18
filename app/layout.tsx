@@ -19,7 +19,7 @@ const vt323 = VT323({
 })
 
 const description =
-  "Desarrollador full stack en Colima, México. Ruby on Rails, Vue 3 y PostgreSQL/MySQL. Creador de Plantelia."
+  "Axel Díaz (Axel Guerrero Díaz), desarrollador full stack en Colima, México. Ruby on Rails, Vue 3 y PostgreSQL/MySQL. Creador de Plantelia."
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     template: `%s | ${PERSONAL_INFO.name}`,
   },
   description,
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
     "Desarrollador full stack",
     "Full Stack Developer",
@@ -38,6 +41,7 @@ export const metadata: Metadata = {
     "Colima",
     "México",
     "Axel Guerrero Díaz",
+    "Axel Díaz",
   ],
   authors: [{ name: PERSONAL_INFO.name, url: SITE_URL }],
   creator: PERSONAL_INFO.name,
@@ -51,7 +55,7 @@ export const metadata: Metadata = {
     siteName: PERSONAL_INFO.name,
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `${PERSONAL_INFO.name} — Desarrollador full stack`,
     description,
   },
