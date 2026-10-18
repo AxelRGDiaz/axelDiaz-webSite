@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { getProjectBySlug, getAllProjects } from "@/lib/mdx"
-import { ProjectDetail } from "@/components/projects/ProjectDetail"
+import { QUESTS } from "@/lib/data"
+import { getQuest } from "@/lib/quests"
+import { QuestDetail } from "@/components/game/QuestDetail"
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -9,22 +10,20 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const project = getProjectBySlug(slug)
-  if (!project) return {}
+  const quest = getQuest(slug)
+  if (!quest) return {}
   return {
-    title: project.title,
-    description: project.description,
+    title: quest.name,
+    description: quest.summary.es,
   }
 }
 
-export async function generateStaticParams() {
-  const projects = getAllProjects()
-  return projects.map((p) => ({ slug: p.slug }))
+export function generateStaticParams() {
+  return QUESTS.map((q) => ({ slug: q.slug }))
 }
 
-export default async function ProjectPage({ params }: Props) {
+export default async function QuestPage({ params }: Props) {
   const { slug } = await params
-  const project = getProjectBySlug(slug)
-  if (!project) notFound()
-  return <ProjectDetail project={project} />
+  if (!getQuest(slug)) notFound()
+  return <QuestDetail slug={slug} />
 }

@@ -1,11 +1,11 @@
 {
-  "name": "DIAZ OS — Axel Díaz Portfolio",
-  "short_name": "DIAZ OS",
-  "description": "Full Stack Developer Portfolio",
+  "name": "Axel Guerrero Díaz — Portafolio",
+  "short_name": "AXEL.GB",
+  "description": "Desarrollador full stack en Colima, México",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#09090b",
-  "theme_color": "#09090b",
+  "background_color": "#c4cfa1",
+  "theme_color": "#0f380f",
   "icons": [
     { "src": "/favicon.ico", "sizes": "any", "type": "image/x-icon" }
   ]

@@ -1,93 +1,45 @@
-# DIAZ OS — Portfolio
+# Portafolio — Axel Guerrero Díaz
 
-A personal portfolio built as a developer OS experience — not a traditional portfolio.
+Portafolio personal con estética de RPG de Game Boy: pantalla de título, hoja de personaje, misiones (proyectos), inventario (herramientas), historia (trayectoria) y "guardar partida" (contacto).
 
 ## Stack
 
-- **Next.js 15** (App Router, SSG)
-- **TypeScript** (strict mode)
-- **Tailwind CSS v4**
-- **Framer Motion** (animations)
-- **Shadcn/UI** (base components)
-- **MDX** (content management)
-- **Resend** (contact form emails)
+- **Next.js 16** (App Router, páginas estáticas)
+- **TypeScript**
+- **Tailwind CSS v4** — paleta de 4 tonos en `app/globals.css` (`gb-ink`, `gb-dark`, `gb-mid`, `gb-light`)
+- **Press Start 2P + VT323** con `next/font`
+- **Resend** para el formulario de contacto
 
-## Getting Started
+## Desarrollo
 
 ```bash
 npm install
 npm run dev
 ```
 
-## How to Customize
+## Cómo editar el contenido
 
-### Add a new project
+Todo el contenido vive en `lib/data.ts`, en español e inglés:
 
-Create `content/projects/my-project.mdx`:
+- `QUESTS` — proyectos. Cada uno genera su página en `/projects/<slug>`.
+- `INVENTORY` — tecnologías y qué tan seguido las usas.
+- `CHAPTERS` — trayectoria.
+- `PERSONAL_INFO` — nombre, correo y redes.
 
-```mdx
----
-title: "My Project"
-description: "Short description"
-stack: ["React", "Node.js"]
-category: "Full Stack"
-status: "live"
-featured: true
-year: 2024
-role: "Lead Developer"
-problem: "What problem did this solve?"
-solution: "How did you solve it?"
-challenges:
-  - "Challenge 1"
-metrics:
-  - { label: "Users", value: "10k+" }
-links:
-  github: "https://github.com/..."
-  demo: "https://demo.example.com"
----
-```
+Los textos de la interfaz están en `lib/i18n.ts`.
 
-### Add work experience
+### CV
 
-Create `content/experience/company-year.mdx`:
+Reemplaza `public/cv.pdf`. No hace falta tocar código.
 
-```mdx
----
-company: "Company Name"
-role: "Your Role"
-version: "v4.0"
-startDate: "2024-01-01"
-current: true
-type: "full-time"
-location: "City, Country"
-remote: true
-description: "Role description"
-achievements:
-  - "Achievement 1"
-stack: ["React", "Node.js"]
----
-```
-
-### Update your CV
-
-Replace `public/cv.pdf` with your PDF. No code changes needed.
-
-## Environment Variables
+## Variables de entorno
 
 ```env
 RESEND_API_KEY=re_xxxxxxxxxxxx
-NEXT_PUBLIC_SITE_URL=https://yourdomain.com
 ```
 
-## Deploy to Vercel
+Sin `RESEND_API_KEY`, `/api/contact` solo escribe el mensaje en la consola y responde con éxito (útil en local).
 
-Connect this repo to Vercel and set the environment variables in the dashboard.
+## Rutas anteriores
 
-## Keyboard Shortcuts
-
-| Shortcut | Action |
-|----------|--------|
-| `⌘K` / `Ctrl+K` | Open Command Palette |
-| `↑↓` | Navigate |
-| `Enter` | Select |
-| `Esc` | Close |
+Las rutas del diseño anterior (`/projects`, `/career`, `/lab`, `/contact`, `/cv`) redirigen a la sección equivalente de la página principal (ver `next.config.ts`).
