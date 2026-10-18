@@ -1,66 +1,68 @@
-import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import type { Metadata, Viewport } from "next"
+import { Press_Start_2P, VT323 } from "next/font/google"
 import "./globals.css"
-import { OSShell } from "@/components/layout/OSShell"
-import { PERSONAL_INFO } from "@/lib/data"
+import { LanguageProvider } from "@/contexts/LanguageContext"
+import { TopBar } from "@/components/game/TopBar"
+import { Footer } from "@/components/game/Footer"
+import { PERSONAL_INFO, SITE_URL } from "@/lib/data"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const pressStart = Press_Start_2P({
+  weight: "400",
+  variable: "--font-press-start",
   subsets: ["latin"],
 })
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const vt323 = VT323({
+  weight: "400",
+  variable: "--font-vt323",
   subsets: ["latin"],
 })
+
+const description =
+  "Desarrollador full stack en Colima, México. Ruby on Rails, Vue 3 y PostgreSQL/MySQL. Creador de Plantelia."
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://axeldiaz.dev"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: `${PERSONAL_INFO.name} — ${PERSONAL_INFO.title}`,
+    default: `${PERSONAL_INFO.name} — Desarrollador full stack`,
     template: `%s | ${PERSONAL_INFO.name}`,
   },
-  description: PERSONAL_INFO.bio,
+  description,
   keywords: [
+    "Desarrollador full stack",
     "Full Stack Developer",
     "Ruby on Rails",
-    "React",
-    "Node.js",
-    "TypeScript",
-    "AWS",
-    "Software Engineer",
+    "Vue 3",
+    "PostgreSQL",
+    "Sidekiq",
+    "Colima",
     "México",
-    "Axel Díaz",
+    "Axel Guerrero Díaz",
   ],
-  authors: [{ name: PERSONAL_INFO.name, url: "https://axeldiaz.dev" }],
+  authors: [{ name: PERSONAL_INFO.name, url: SITE_URL }],
   creator: PERSONAL_INFO.name,
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: "https://axeldiaz.dev",
-    title: `${PERSONAL_INFO.name} — ${PERSONAL_INFO.title}`,
-    description: PERSONAL_INFO.bio,
-    siteName: "DIAZ OS",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    locale: "es_MX",
+    alternateLocale: ["en_US"],
+    url: SITE_URL,
+    title: `${PERSONAL_INFO.name} — Desarrollador full stack`,
+    description,
+    siteName: PERSONAL_INFO.name,
   },
   twitter: {
-    card: "summary_large_image",
-    title: `${PERSONAL_INFO.name} — ${PERSONAL_INFO.title}`,
-    description: PERSONAL_INFO.bio,
-    images: ["/og-image.png"],
-    creator: "@axeldiaz",
+    card: "summary",
+    title: `${PERSONAL_INFO.name} — Desarrollador full stack`,
+    description,
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
+}
+
+export const viewport: Viewport = {
+  themeColor: "#0f380f",
 }
 
 export default function RootLayout({
@@ -69,19 +71,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="theme-color" content="#09090b" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try{const t=localStorage.getItem('diaz-os-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.classList.toggle('dark',t==='dark')}catch(e){}`,
-          }}
-        />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-zinc-50 dark:bg-zinc-950`}
-      >
-        <OSShell>{children}</OSShell>
+    <html lang="es" className={`${pressStart.variable} ${vt323.variable}`}>
+      <body className="min-h-screen antialiased">
+        <LanguageProvider>
+          <TopBar />
+          <main>{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   )
