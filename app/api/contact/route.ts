@@ -19,6 +19,11 @@ export async function POST(request: NextRequest) {
     }
 
     if (!process.env.RESEND_API_KEY) {
+      // En producción sin clave el correo nunca saldría: avisar en vez de fingir éxito
+      if (process.env.NODE_ENV === "production") {
+        console.error("Contact form: RESEND_API_KEY is not set")
+        return NextResponse.json({ error: "Email service not configured" }, { status: 500 })
+      }
       console.log("Contact form submission (Resend not configured):", { name, email, subject, message })
       return NextResponse.json({ success: true })
     }
@@ -26,7 +31,7 @@ export async function POST(request: NextRequest) {
     const { Resend } = await import("resend")
     const resend = new Resend(process.env.RESEND_API_KEY)
 
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: "Portfolio Contact <portafolio@axel-diaz.com>",
       to: [PERSONAL_INFO.email],
       replyTo: email,
@@ -57,6 +62,12 @@ ${message}
 </div>
       `.trim(),
     })
+
+    // Resend no lanza excepción al fallar: devuelve el error en la respuesta
+    if (error) {
+      console.error("Resend error:", error)
+      return NextResponse.json({ error: "Email could not be sent" }, { status: 502 })
+    }
 
     return NextResponse.json({ success: true })
   } catch (error) {
