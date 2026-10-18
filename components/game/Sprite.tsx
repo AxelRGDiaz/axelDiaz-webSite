@@ -1,31 +1,4 @@
-// Personaje de 12×14 píxeles: k = tinta, d = oscuro, l = medio, w = claro
-const MAP = [
-  "....kkkk....",
-  "...kddddk...",
-  "..kddddddk..",
-  "..kwkwwkwk..",
-  "..kwwwwwwk..",
-  "...kwkkwk...",
-  "....kwwk....",
-  "..kkllllkk..",
-  ".kllllllllk.",
-  ".kllkkkkllk.",
-  "kkkkddddkkkk",
-  "kddddddddddk",
-  "kkkkkkkkkkkk",
-  ".kk......kk.",
-]
-
-const COLORS: Record<string, string> = {
-  k: "#0f380f",
-  d: "#306230",
-  l: "#8bac0f",
-  w: "#dce3c0",
-}
-
-const RECTS = MAP.flatMap((row, y) =>
-  row.split("").flatMap((ch, x) => (COLORS[ch] ? [{ x, y, fill: COLORS[ch] }] : []))
-)
+import { SPRITE_MAP, SPRITE_RECTS } from "@/lib/sprite"
 
 export function Sprite({ label, size = 12 }: { label: string; size?: number }) {
   return (
@@ -33,12 +6,12 @@ export function Sprite({ label, size = 12 }: { label: string; size?: number }) {
       role="img"
       aria-label={label}
       width={12 * size}
-      height={MAP.length * size}
-      viewBox={`0 0 12 ${MAP.length}`}
+      height={SPRITE_MAP.length * size}
+      viewBox={`0 0 12 ${SPRITE_MAP.length}`}
       shapeRendering="crispEdges"
       className="shrink-0"
     >
-      {RECTS.map((r) => (
+      {SPRITE_RECTS.map((r) => (
         <rect key={`${r.x}-${r.y}`} x={r.x} y={r.y} width={1} height={1} fill={r.fill} />
       ))}
     </svg>

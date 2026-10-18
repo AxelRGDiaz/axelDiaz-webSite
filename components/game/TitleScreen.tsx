@@ -20,7 +20,10 @@ export function TitleScreen() {
             {rest.join(" ")}
           </h1>
           <p className="m-0 max-w-[26em] text-[30px] leading-[1.2]">{t.title.intro}</p>
-          <a href="#personaje" className="blink self-start py-3 font-pixel text-sm no-underline">
+          <a href="#personaje" className="self-start py-3 font-pixel text-sm no-underline">
+            <span aria-hidden="true" className="blink">
+              ▶
+            </span>{" "}
             {t.title.start}
           </a>
         </div>

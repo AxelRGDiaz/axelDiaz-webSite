@@ -3,7 +3,7 @@
 /* Paleta de 4 tonos del Game Boy, con un tono extra para campos de texto */
 @theme inline {
   --color-gb-ink: #0f380f;
-  --color-gb-dark: #306230;
+  --color-gb-dark: #2d5d2d;
   --color-gb-mid: #8bac0f;
   --color-gb-light: #c4cfa1;
   --color-gb-paper: #dce3c0;
